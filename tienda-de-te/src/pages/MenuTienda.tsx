@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Coffee, Clock, MapPin, Phone, Star } from 'lucide-react';
+import '../styles/menu-tienda.css';
 
 const MenuTienda: React.FC = () => {
   const [selectedLocation, setSelectedLocation] = useState('palermo');
@@ -117,139 +118,129 @@ const MenuTienda: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Menú de Nuestras Tiendas
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+    <div style={{ paddingTop: '80px', minHeight: '100vh' }}>
+      {/* Header */}
+      <div className="menu-tienda-header">
+        <div className="container text-center">
+          <h1 className="menu-tienda-title">Menú de Nuestras Tiendas</h1>
+          <p className="menu-tienda-subtitle">
             Disfruta de nuestros tés premium y deliciosos acompañamientos en un ambiente único y acogedor
           </p>
         </div>
+      </div>
 
+      <div className="container py-5">
         {/* Location Selector */}
-        <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Selecciona tu Tienda</h2>
-          <div className="grid md:grid-cols-3 gap-4">
+        <div className="location-selector">
+          <h2 className="h4 mb-4">Selecciona tu Tienda</h2>
+          <div className="row g-3">
             {locations.map((location) => (
-              <button
-                key={location.id}
-                onClick={() => setSelectedLocation(location.id)}
-                className={`p-4 rounded-lg border-2 transition-all duration-200 text-left ${
-                  selectedLocation === location.id
-                    ? 'border-green-500 bg-green-50'
-                    : 'border-gray-200 hover:border-green-300'
-                }`}
-              >
-                <h3 className="font-semibold text-gray-900 mb-2">{location.name}</h3>
-                <div className="space-y-1 text-sm text-gray-600">
-                  <div className="flex items-start">
-                    <MapPin className="h-4 w-4 mt-0.5 mr-2 flex-shrink-0" />
+              <div key={location.id} className="col-md-4">
+                <div
+                  className={`location-card ${selectedLocation === location.id ? 'active' : ''}`}
+                  onClick={() => setSelectedLocation(location.id)}
+                >
+                  <h5>{location.name}</h5>
+                  <div className="location-info">
+                    <MapPin size={16} />
                     <span>{location.address}</span>
                   </div>
-                  <div className="flex items-center">
-                    <Phone className="h-4 w-4 mr-2 flex-shrink-0" />
+                  <div className="location-info">
+                    <Phone size={16} />
                     <span>{location.phone}</span>
                   </div>
-                  <div className="flex items-center">
-                    <Clock className="h-4 w-4 mr-2 flex-shrink-0" />
+                  <div className="location-info">
+                    <Clock size={16} />
                     <span>{location.hours}</span>
                   </div>
                 </div>
-              </button>
+              </div>
             ))}
           </div>
         </div>
 
         {/* Menu Sections */}
-        <div className="space-y-8">
-          {menuSections.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="bg-white rounded-xl shadow-sm overflow-hidden">
-              <div className="bg-green-600 px-6 py-4">
-                <h2 className="text-xl font-bold text-white flex items-center">
-                  <Coffee className="mr-3 h-6 w-6" />
-                  {section.title}
-                </h2>
-              </div>
-              
-              <div className="p-6">
-                <div className="grid gap-6">
-                  {section.items.map((item, itemIndex) => (
-                    <div key={itemIndex} className="flex justify-between items-start group hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                      <div className="flex-1">
-                        <div className="flex items-center mb-2">
-                          <h3 className="text-lg font-semibold text-gray-900 mr-2">
-                            {item.name}
-                          </h3>
-                          {item.popular && (
-                            <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
-                              Popular
-                            </span>
-                          )}
-                        </div>
-                        
-                        <p className="text-gray-600 mb-3 leading-relaxed">
-                          {item.description}
-                        </p>
-                        
-                        <div className="flex items-center">
-                          <div className="flex items-center text-yellow-400 mr-2">
-                            {[...Array(5)].map((_, i) => (
-                              <Star 
-                                key={i} 
-                                className={`h-4 w-4 ${i < Math.floor(item.rating) ? 'fill-current' : 'text-gray-300'}`} 
-                              />
-                            ))}
-                          </div>
-                          <span className="text-sm text-gray-600">({item.rating})</span>
-                        </div>
-                      </div>
-                      
-                      <div className="text-right ml-4">
-                        <span className="text-2xl font-bold text-green-600">
-                          ${item.price}
-                        </span>
+        {menuSections.map((section, sectionIndex) => (
+          <div key={sectionIndex} className="menu-section">
+            <div className="menu-section-header">
+              <h2 className="menu-section-title">
+                <Coffee size={24} />
+                {section.title}
+              </h2>
+            </div>
+            
+            <div className="menu-section-body">
+              {section.items.map((item, itemIndex) => (
+                <div key={itemIndex} className="menu-item">
+                  <div className="menu-item-header">
+                    <div className="d-flex align-items-center flex-wrap">
+                      <h5 className="menu-item-name">{item.name}</h5>
+                      <div className="menu-item-badges">
+                        {item.popular && (
+                          <span className="badge-popular">Popular</span>
+                        )}
                       </div>
                     </div>
-                  ))}
+                    <div className="menu-item-price">
+                      ${item.price}
+                    </div>
+                  </div>
+                  
+                  <p className="menu-item-description">
+                    {item.description}
+                  </p>
+                  
+                  <div className="menu-item-rating">
+                    <div className="rating-stars">
+                      {[...Array(5)].map((_, i) => (
+                        <Star 
+                          key={i} 
+                          size={16}
+                          className={i < Math.floor(item.rating) ? 'text-warning' : 'text-muted'}
+                          fill="currentColor"
+                        />
+                      ))}
+                    </div>
+                    <span className="rating-value">({item.rating})</span>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
 
         {/* Special Offers */}
-        <div className="bg-gradient-to-r from-green-600 to-green-700 rounded-2xl p-8 mt-12 text-white">
-          <div className="text-center">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-              Ofertas Especiales
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6 mt-8">
-              <div className="bg-white/10 rounded-xl p-6">
-                <h3 className="text-xl font-semibold mb-2">Merienda Completa</h3>
-                <p className="text-green-100 mb-4">
-                  Cualquier té caliente + scone + mermelada artesanal
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold">$1.200</span>
-                  <span className="text-sm bg-white/20 px-3 py-1 rounded-full">
-                    Ahorra $380
-                  </span>
+        <div className="special-offers">
+          <div className="special-offers-content">
+            <h2 className="text-center mb-4">Ofertas Especiales</h2>
+            <div className="row g-4">
+              <div className="col-md-6">
+                <div className="offer-card">
+                  <h4>Merienda Completa</h4>
+                  <p>
+                    Cualquier té caliente + scone + mermelada artesanal
+                  </p>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <span className="offer-price">$1.200</span>
+                    <span className="offer-savings">
+                      Ahorra $380
+                    </span>
+                  </div>
                 </div>
               </div>
               
-              <div className="bg-white/10 rounded-xl p-6">
-                <h3 className="text-xl font-semibold mb-2">Happy Hour</h3>
-                <p className="text-green-100 mb-4">
-                  2x1 en tés fríos todos los días de 15:00 a 17:00
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold">50% OFF</span>
-                  <span className="text-sm bg-white/20 px-3 py-1 rounded-full">
-                    Lun-Dom
-                  </span>
+              <div className="col-md-6">
+                <div className="offer-card">
+                  <h4>Happy Hour</h4>
+                  <p>
+                    2x1 en tés fríos todos los días de 15:00 a 17:00
+                  </p>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <span className="offer-price">50% OFF</span>
+                    <span className="offer-savings">
+                      Lun-Dom
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -257,22 +248,18 @@ const MenuTienda: React.FC = () => {
         </div>
 
         {/* Contact Info */}
-        <div className="bg-white rounded-xl shadow-sm p-8 mt-8">
-          <div className="text-center">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              ¿Tienes alguna pregunta sobre nuestro menú?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Nuestro equipo estará encantado de ayudarte con cualquier consulta o recomendación personalizada
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                Contactar Tienda
-              </button>
-              <button className="border-2 border-green-600 text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-600 hover:text-white transition-colors">
-                Ver Ubicaciones
-              </button>
-            </div>
+        <div className="menu-contact">
+          <h4>¿Tienes alguna pregunta sobre nuestro menú?</h4>
+          <p>
+            Nuestro equipo estará encantado de ayudarte con cualquier consulta o recomendación personalizada
+          </p>
+          <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+            <button className="btn btn-menu-primary">
+              Contactar Tienda
+            </button>
+            <button className="btn btn-menu-outline">
+              Ver Ubicaciones
+            </button>
           </div>
         </div>
       </div>
