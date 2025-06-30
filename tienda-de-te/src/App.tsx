@@ -3,11 +3,11 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Tienda from './pages/Tienda';
-import Tutoriales from './pages/Tutoriales';
+// import Tutoriales from './pages/Tutoriales';
 import MenuTienda from './pages/MenuTienda';
-import TrabajaConNosotros from './pages/TrabajaConNosotros';
-import Franquicias from './pages/Franquicias';
-import Contacto from './pages/Contacto';
+// import TrabajaConNosotros from './pages/TrabajaConNosotros';
+// import Franquicias from './pages/Franquicias';
+// import Contacto from './pages/Contacto';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -18,16 +18,16 @@ function App() {
         return <Home />;
       case 'tienda':
         return <Tienda />;
-      case 'tutoriales':
-        return <Tutoriales />;
+      // case 'tutoriales':
+      //   return <Tutoriales />;
       case 'menu-tienda':
         return <MenuTienda />;
-      case 'trabaja-con-nosotros':
-        return <TrabajaConNosotros />;
-      case 'franquicias':
-        return <Franquicias />;
-      case 'contacto':
-        return <Contacto />;
+      // case 'trabaja-con-nosotros':
+      //   return <TrabajaConNosotros />;
+      // case 'franquicias':
+      //   return <Franquicias />;
+      // case 'contacto':
+      //   return <Contacto />;
       default:
         return <Home />;
     }
