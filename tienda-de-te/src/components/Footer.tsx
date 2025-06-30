@@ -68,16 +68,16 @@ const Footer: React.FC = () => {
               <div className="contact-info-tea">
                 <MapPin size={20} />
                 <div>
-                  <p className="mb-0">Av. Corrientes 1234<br />Buenos Aires, Argentina</p>
+                  <p className="mb-0 texto">Av. Corrientes 1234<br />Buenos Aires, Argentina</p>
                 </div>
               </div>
               <div className="contact-info-tea">
                 <Phone size={20} />
-                <p className="mb-0">+54 11 4567-8900</p>
+                <p className="mb-0 texto">+54 11 4567-8900</p>
               </div>
               <div className="contact-info-tea">
                 <Mail size={20} />
-                <p className="mb-0">info@teaverde.com.ar</p>
+                <p className="mb-0 texto">info@teaverde.com.ar</p>
               </div>
             </div>
           </div>
@@ -89,8 +89,8 @@ const Footer: React.FC = () => {
               <p className="mb-0">© 2024 TeaVerde. Todos los derechos reservados.</p>
             </div>
             <div className="col-md-6 text-md-end">
-              <a href="#" className="me-3">Política de Privacidad</a>
-              <a href="#">Cookies</a>
+              <a href="#" className="me-3 texto ">Política de Privacidad</a>
+              <a href="#" className="texto">Cookies</a>
             </div>
           </div>
         </div>

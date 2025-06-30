@@ -12,10 +12,8 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, setCurrentPage }) 
   const menuItems = [
     { id: 'home', label: 'Inicio' },
     { id: 'tienda', label: 'Tienda' },
-    { id: 'tutoriales', label: 'Tutoriales' },
     { id: 'menu-tienda', label: 'Menú Tienda' },
     { id: 'trabaja-con-nosotros', label: 'Trabaja con Nosotros' },
-    { id: 'franquicias', label: 'Franquicias' },
     { id: 'contacto', label: 'Contacto' }
   ];
 

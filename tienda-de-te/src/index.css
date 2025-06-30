@@ -566,7 +566,7 @@ a:hover {
   display: flex;
   align-items: flex-start;
   margin-bottom: var(--spacing-md);
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--bg-light) !important;
 }
 
 .contact-info-tea svg {
@@ -582,6 +582,9 @@ a:hover {
   margin-top: var(--spacing-xl);
   text-align: center;
   color: rgba(255, 255, 255, 0.6);
+}
+.texto{
+  color: var(--bg-light) !important;
 }
 
 /* ===== FORMULARIOS ===== */

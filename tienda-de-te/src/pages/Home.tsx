@@ -3,7 +3,13 @@ import { ShoppingBag, Award, Truck, Users, ArrowRight, Star } from 'lucide-react
 import earlyTeImg from '../assets/img/Early-te.jpeg'; 
 import dragonVerdeImg from '../assets/img/Dragon-verde.jpeg'; 
 import chamomileImg from '../assets/img/Chamomile.jpeg';
-const Home: React.FC = () => {
+
+// Define las props que recibe Home
+type HomeProps = {
+  setCurrentPage: (page: string) => void;
+};
+
+const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
   const features = [
     {
       icon: Award,
@@ -59,14 +65,15 @@ const Home: React.FC = () => {
                 de las mejores plantaciones del mundo. Calidad excepcional en cada taza.
               </p>
               <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                <button className="btn btn-tea-primary btn-lg d-flex align-items-center justify-content-center">
+                <button
+                  className="btn btn-tea-primary btn-lg d-flex align-items-center justify-content-center"
+                  onClick={() => setCurrentPage('menu-tienda')}
+                >
                   <ShoppingBag size={20} className="me-2" />
                   Explorar Tienda
                   <ArrowRight size={20} className="ms-2" />
                 </button>
-                <button className="btn btn-tea-secondary btn-lg">
-                  Ver Tutoriales
-                </button>
+                
               </div>
             </div>
           </div>
