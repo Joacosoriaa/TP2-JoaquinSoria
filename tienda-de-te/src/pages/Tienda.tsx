@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, Star, ShoppingCart, Heart } from 'lucide-react';
+import { Search, Star, ShoppingCart, Heart } from 'lucide-react';
 import earlyTeImg from '../assets/img/Early-te.jpeg'; 
 import dragonVerdeImg from '../assets/img/Dragon-verde.jpeg'; 
 import chamomileImg from '../assets/img/Chamomile.jpeg';
