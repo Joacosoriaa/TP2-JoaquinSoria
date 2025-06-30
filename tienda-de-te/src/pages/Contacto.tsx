@@ -3,7 +3,6 @@ import { MapPin, Phone, Mail, Clock, Send, MessageSquare, Users, HeadphonesIcon 
 import '../styles/contacto.css';
 import earlyTeImg from '../assets/img/Early-te.jpeg'; 
 import dragonVerdeImg from '../assets/img/Dragon-verde.jpeg'; 
-import chamomileImg from '../assets/img/Chamomile.jpeg';
 import teteraHierroImg from '../assets/img/tetera-hierro.webp';
 
 const Contacto: React.FC = () => {
