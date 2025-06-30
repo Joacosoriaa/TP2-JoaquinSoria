@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Tienda from './pages/Tienda';
 // import Tutoriales from './pages/Tutoriales';
 import MenuTienda from './pages/MenuTienda';
-// import TrabajaConNosotros from './pages/TrabajaConNosotros';
+import TrabajaConNosotros from './pages/TrabajaConNosotros';
 // import Franquicias from './pages/Franquicias';
 // import Contacto from './pages/Contacto';
 
@@ -22,8 +22,8 @@ function App() {
       //   return <Tutoriales />;
       case 'menu-tienda':
         return <MenuTienda />;
-      // case 'trabaja-con-nosotros':
-      //   return <TrabajaConNosotros />;
+      case 'trabaja-con-nosotros':
+        return <TrabajaConNosotros />;
       // case 'franquicias':
       //   return <Franquicias />;
       // case 'contacto':
